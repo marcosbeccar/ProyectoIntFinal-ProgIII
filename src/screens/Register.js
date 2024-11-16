@@ -84,9 +84,15 @@ export default class Register extends Component {
           </TouchableOpacity>
         ) : null}
 
-        
 
-        
+        {this.state.errorMSG && <Text>{this.state.errorMSG}</Text>}
+
+        <Text style={styles.texto}>¿Ya tenes una cuenta?</Text>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Login")}
+        >
+        <Text style={styles.loginButtonText}>Login</Text>
+        </TouchableOpacity>
 
 
       </View>
