@@ -16,6 +16,15 @@ export default class Login extends Component {
   handleSubmit = () => {
     const { email, password } = this.state;
 
+    if (!email.includes("@")) {
+        this.setState({ errorMSG: "Email mal formateado" });
+        return;
+      }
+  
+      if (password.length < 6) {
+        this.setState({ errorMSG: "La password debe tener una longitud mínima de 6 caracteres" });
+        return;
+      }
     
 
     auth
