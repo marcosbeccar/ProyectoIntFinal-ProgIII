@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Login from "./src/screens/Login";
+import CreatePost from './src/screens/CreatePost';
 import Register from "./src/screens/Register";
 import HomeMenu from "./src/screens/HomeMenu";
 
@@ -14,9 +15,10 @@ export default function App() {
   return (
     <NavigationContainer> 
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Register" component={Register} /> 
         <Stack.Screen name="HomeMenu" component={HomeMenu} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="CreatePost" component={CreatePost} />
       </Stack.Navigator> 
     </NavigationContainer> 
   );
