@@ -11,7 +11,7 @@ import CreatePost from "./CreatePost"
 
 const Tab = createBottomTabNavigator();
 
-class HomeScreen extends Component {
+class HomeScreen extends Component {  //HomeScreen sería el home solo cuando hay un usuario logueado
   render() {
     return (
       <View style={styles.container}>
@@ -71,7 +71,7 @@ export default class HomeMenu extends Component {
     return (
       <View style={styles.container}>
         {this.state.logueado ? (
-          <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
+          <Tab.Navigator screenOptions={{ tabBarShowLabel: false , headerShown: false}}>
             <Tab.Screen
               name="Home"
               options={{
