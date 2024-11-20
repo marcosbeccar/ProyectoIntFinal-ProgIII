@@ -74,7 +74,7 @@ export default class Login extends Component {
 
         <Text style={styles.accountText}>Go back</Text>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate("HomeTabs")}
+          onPress={() => this.props.navigation.navigate("HomeMenu")}
         >
           <Text style={styles.loginButtonText}>Home</Text>
         </TouchableOpacity>
