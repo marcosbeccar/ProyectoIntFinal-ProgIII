@@ -15,7 +15,7 @@ export default class Register extends Component {
 
     this.state = {
       email: "",
-      displayName: "",
+      userName: "",
       password: "",
       registered: false,
       errorMSG: "",
@@ -32,7 +32,7 @@ export default class Register extends Component {
           db.collection("users")
             .add({ 
               email: this.state.email, 
-              displayName: this.state.userName,
+              userName: this.state.userName,
               createdAt: Date.now(),
             })
 

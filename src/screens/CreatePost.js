@@ -15,7 +15,7 @@ export default class CreatePost extends Component {
   handlePost(){
     console.log(auth.currentUser)
     db.collection("posts").add({
-        mail: auth.currentUser.email,
+        email: auth.currentUser.email,
         msg: this.state.postText,
         time: Date.now(),
         likes: [], 
