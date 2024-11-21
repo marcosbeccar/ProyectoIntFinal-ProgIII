@@ -15,6 +15,7 @@ export default class Profile extends Component {
 
   componentDidMount() {
     const currentUser = auth.currentUser;
+    
 
     if (currentUser) {
       this.setState({
@@ -24,7 +25,8 @@ export default class Profile extends Component {
       
       db.collection("users").onSnapshot((snapshot) => {
         snapshot.forEach((doc) => {
-          if (doc.data().mail === currentUser.email) {
+          if (doc.data().email === currentUser.email) {
+
             this.setState({
               userName: doc.data().userName || 'Usuario', 
             });
@@ -68,7 +70,7 @@ export default class Profile extends Component {
               {posts.length > 0 ? (
                 posts.map((post, index) => (
                   <View key={index} style={styles.postCard}>
-                    <Text style={styles.postText}>{post.message}</Text>
+                    <Text style={styles.postText}>{post.msg}</Text>
                   </View>
                 ))
               ) : (
