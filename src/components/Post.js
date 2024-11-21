@@ -15,7 +15,7 @@ export default class Post extends Component {
     return (
       <View style ={styles.container}>
       <Text style={styles.mainText}>{this.state.content}</Text>
-      <Text>Por {this.state.userName} ({this.state.mail})</Text>
+      <Text style={styles.bold}>Por {this.state.mail}</Text>
       <Text>Likes: {this.state.likes.length}</Text>
       </View>
     )
@@ -24,9 +24,7 @@ export default class Post extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: "auto",
-    height: "auto",
-    margin: "10%",
+    margin: "5%",
     backgroundColor: "#22c6e2",
     alignItems: "center",
     justifyContent: "center",
@@ -36,5 +34,8 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontSize: 30,
+  },
+  bold:{
+    fontWeight: "bold"
   }
 });

@@ -15,7 +15,6 @@ class HomeScreen extends Component {  //HomeScreen sería el home solo cuando ha
   render() {
     return (
       <View style={styles.container}>
-        <Text>Home</Text>
         <View style={styles.postContainer}>
           {this.props.posts.length !== 0 ? (
             <FlatList
@@ -149,6 +148,6 @@ const styles = StyleSheet.create({
   },
   postContainer: {
     flex: 1,
-    width: "90%",
+    alignItems: "center",
   },
 });
