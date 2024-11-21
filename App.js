@@ -5,6 +5,7 @@ import Login from "./src/screens/Login";
 import CreatePost from './src/screens/CreatePost';
 import Register from "./src/screens/Register";
 import HomeMenu from "./src/screens/HomeMenu";
+import Profile from "./src/screens/Profile"
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -18,6 +19,7 @@ export default function App() {
         <Stack.Screen name="HomeMenu" component={HomeMenu}  />
         <Stack.Screen name="Register" component={Register}  /> 
         <Stack.Screen name="Login" component={Login} />
+       
       </Stack.Navigator> 
     </NavigationContainer> 
   );
