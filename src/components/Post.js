@@ -16,7 +16,7 @@ export default class Post extends Component {
       <View style ={styles.container}>
       <Text style={styles.mainText}>{this.state.content}</Text>
       <Text>Por {this.state.userName} ({this.state.mail})</Text>
-      <Text>Likes: {this.state.likes}</Text>
+      <Text>Likes: {this.state.likes.length}</Text>
       </View>
     )
   }

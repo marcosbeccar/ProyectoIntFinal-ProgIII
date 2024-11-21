@@ -17,8 +17,8 @@ export default class CreatePost extends Component {
         mail: auth.currentUser.email,
         msg: this.state.postText,
         time: Date.now(),
-        likes: [], //cambié esto a una lista, quizá haya que borrar los post que ya existan por si se rompen
-        user: auth.currentUser.user //posible error
+        likes: [], 
+        user: auth.currentUser.displayName,
     })
     .then()
     .catch( e => console.log(e))
