@@ -76,6 +76,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
     marginBottom: 10,
+    flexWrap: "wrap",
+    overflow: "hidden",
   },
   userInfo: {
     fontSize: 14,
