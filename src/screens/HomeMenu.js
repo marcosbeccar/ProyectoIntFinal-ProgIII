@@ -1,42 +1,15 @@
 import React, { Component } from "react";
 import { Text, View, FlatList, StyleSheet, Button } from "react-native";
-import Post from "../components/Post";
 import { auth, db } from "../firebase/config";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome } from "@expo/vector-icons";
 
 import Profile from "./Profile";
 import Users from "./Users";
-import CreatePost from "./CreatePost"
+import CreatePost from "./CreatePost";
+import Post from "../components/Post";
 
 const Tab = createBottomTabNavigator();
-
-class HomeScreen extends Component {  //HomeScreen sería el home solo cuando hay un usuario logueado
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.postContainer}>
-          {this.props.posts.length !== 0 ? (
-            <FlatList
-              data={this.props.posts}
-              keyExtractor={(post) => post.id}
-              renderItem={({ item }) => (
-                <Post
-                  content={item.data.msg}
-                  userName={item.data.user}
-                  mail={item.data.mail}
-                  likes={`${item.data.likes}`}
-                />
-              )}
-            />
-          ) : (
-            <Text>No hay posts para mostrar</Text>
-          )}
-        </View>
-      </View>
-    );
-  }
-}
 
 export default class HomeMenu extends Component {
   constructor(props) {
@@ -67,17 +40,39 @@ export default class HomeMenu extends Component {
   }
 
   render() {
+    const { posts, logueado } = this.state;
+
     return (
       <View style={styles.container}>
-        {this.state.logueado ? (
-          <Tab.Navigator screenOptions={{ tabBarShowLabel: false , headerShown: false}}>
+        {logueado ? (
+          <Tab.Navigator screenOptions={{ tabBarShowLabel: false, headerShown: false }}>
             <Tab.Screen
               name="Home"
               options={{
                 tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />,
               }}
             >
-              {() => <HomeScreen posts={this.state.posts} />}
+              {() => (
+                <View style={styles.postContainer}>
+                  {posts.length !== 0 ? (
+                    <FlatList
+                      data={posts}
+                      keyExtractor={(post) => post.id}
+                      renderItem={({ item }) => (
+                        <Post
+                          content={item.data.msg}
+                          userName={item.data.user}
+                          mail={item.data.email}
+                          likes={item.data.likes}
+                          postId={item.id}
+                        />
+                      )}
+                    />
+                  ) : (
+                    <Text>No hay posts para mostrar</Text>
+                  )}
+                </View>
+              )}
             </Tab.Screen>
             <Tab.Screen
               name="Users"
@@ -128,19 +123,20 @@ export default class HomeMenu extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#ffffff",
   },
   authContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#ff5b02",
+    backgroundColor: "#292828",
     padding: 20,
   },
   welcomeText: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 30,
-    color: "#333",
+    color: "#ffffff",
   },
   buttonContainer: {
     width: "80%",
@@ -148,6 +144,7 @@ const styles = StyleSheet.create({
   },
   postContainer: {
     flex: 1,
+    paddingHorizontal: 20,
     alignItems: "center",
   },
 });
