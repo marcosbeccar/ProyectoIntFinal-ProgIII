@@ -17,18 +17,16 @@ export default class Profile extends Component {
       userName: "",
       email: "",
       posts: [],
-      cantidadPosts: 0
+      cantidadPosts: 0,
     };
   }
 
   componentDidMount() {
     const currentUser = auth.currentUser;
-
     if (currentUser) {
       this.setState({
         email: currentUser.email,
       });
-
       db.collection("users").onSnapshot((snapshot) => {
         snapshot.forEach((doc) => {
           if (doc.data().email === currentUser.email) {
@@ -46,10 +44,32 @@ export default class Profile extends Component {
             userPosts.push({ id: doc.id, data: doc.data() });
           }
         });
-        this.setState({ posts: userPosts, cantidadPosts: userPosts.length  });
+        this.setState({
+          posts: userPosts,
+          cantidadPosts: userPosts.length,
+        });
       });
     }
   }
+
+  deletePost = (postId) => {
+    db.collection("posts")
+      .doc(postId)
+      .delete()
+      .then(() => {
+        console.log("Post eliminado");
+        this.setState((state) => {
+          const updatedPosts = state.posts.filter((post) => post.id !== postId);
+          return {
+            posts: updatedPosts,
+            cantidadPosts: updatedPosts.length,
+          };
+        });
+      })
+      .catch((error) => {
+        console.log("Error al eliminar el post: ", error);
+      });
+  };
 
   handleLogout = () => {
     auth.signOut().then(() => {
@@ -60,7 +80,6 @@ export default class Profile extends Component {
   render() {
     const { userName, email, posts, cantidadPosts } = this.state;
     const currentUser = auth.currentUser;
-
     return (
       <View style={styles.container}>
         {currentUser ? (
@@ -73,19 +92,28 @@ export default class Profile extends Component {
               style={styles.profileIcon}
             />
             <Text style={styles.email}>Email: {email}</Text>
-            <Text style={styles.subtitle}> Cantidad de Posts: {this.state.cantidadPosts} </Text>
+            <Text style={styles.subtitle}>
+              Cantidad de Posts: {cantidadPosts}
+            </Text>
             <Text style={styles.subtitle}>Tus Posts:</Text>
             <ScrollView style={styles.postsContainer}>
               {posts.length > 0 ? (
                 posts.map((post, index) => (
-                  <Post
-                    key={index}
-                    postId={post.id}
-                    content={post.data.msg}
-                    userName={userName}
-                    mail={email}
-                    likes={post.data.likes || []}
-                  />
+                  <View key={index}>
+                    <Post
+                      postId={post.id}
+                      content={post.data.msg}
+                      userName={userName}
+                      mail={email}
+                      likes={post.data.likes || []}
+                    />
+                    <TouchableOpacity
+                      style={styles.deleteButton}
+                      onPress={() => this.deletePost(post.id)}
+                    >
+                      <Text style={styles.deleteButtonText}>Eliminar</Text>
+                    </TouchableOpacity>
+                  </View>
                 ))
               ) : (
                 <Text style={styles.noPostsText}>No tienes posts.</Text>
@@ -182,5 +210,18 @@ const styles = StyleSheet.create({
   profileIcon: {
     marginBottom: 10,
     alignSelf: "center",
+  },
+  deleteButton: {
+    backgroundColor: "#e74c3c",
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 5,
+    marginTop: 10,
+    alignItems: "center",
+  },
+  deleteButtonText: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: "600",
   },
 });
