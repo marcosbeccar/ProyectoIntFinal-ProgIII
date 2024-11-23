@@ -17,6 +17,7 @@ export default class Profile extends Component {
       userName: "",
       email: "",
       posts: [],
+      cantidadPosts: 0
     };
   }
 
@@ -45,7 +46,7 @@ export default class Profile extends Component {
             userPosts.push({ id: doc.id, data: doc.data() });
           }
         });
-        this.setState({ posts: userPosts });
+        this.setState({ posts: userPosts, cantidadPosts: userPosts.length  });
       });
     }
   }
@@ -57,7 +58,7 @@ export default class Profile extends Component {
   };
 
   render() {
-    const { userName, email, posts } = this.state;
+    const { userName, email, posts, cantidadPosts } = this.state;
     const currentUser = auth.currentUser;
 
     return (
@@ -72,6 +73,7 @@ export default class Profile extends Component {
               style={styles.profileIcon}
             />
             <Text style={styles.email}>Email: {email}</Text>
+            <Text style={styles.subtitle}> Cantidad de Posts: {this.state.cantidadPosts} </Text>
             <Text style={styles.subtitle}>Tus Posts:</Text>
             <ScrollView style={styles.postsContainer}>
               {posts.length > 0 ? (
