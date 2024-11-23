@@ -37,7 +37,7 @@ export default class Profile extends Component {
         });
       });
 
-      db.collection("posts").onSnapshot((querySnapshot) => {
+      db.collection("posts").orderBy("time", "desc").onSnapshot((querySnapshot) => {
         const userPosts = [];
         querySnapshot.forEach((doc) => {
           if (doc.data().email === currentUser.email) {
