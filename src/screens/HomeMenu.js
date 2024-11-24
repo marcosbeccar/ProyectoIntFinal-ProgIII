@@ -152,5 +152,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     alignItems: "center",
+    backgroundColor: "#c3e6fa",
   },
 });
