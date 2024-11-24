@@ -62,7 +62,7 @@ class Users extends Component {
 
         <FlatList
           data={filteredUsers}
-          keyExtractor={(item) => item.email} // Email como clave única
+          keyExtractor={(item) => item.email} 
           renderItem={({ item }) => (
             <View style={styles.userContainer}>
               <Text style={styles.userText}>{item.email}</Text>

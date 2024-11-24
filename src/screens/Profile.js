@@ -4,7 +4,7 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
+  FlatList,
 } from "react-native";
 import { auth, db } from "../firebase/config";
 import { Ionicons } from "@expo/vector-icons";
@@ -94,29 +94,24 @@ export default class Profile extends Component {
               Cantidad de posts: {cantidadPosts}
             </Text>
             <Text style={styles.subtitle}>Tus Posts:</Text>
-            <ScrollView style={styles.postsContainer}>
-              {posts.length > 0 ? (
-                posts.map((post, index) => (
-                  <View key={index} style={styles.postContainer}>
-                    <Post
-                      postId={post.id}
-                      content={post.data.msg}
-                      userName={userName}
-                      mail={email}
-                      likes={post.data.likes || []}
-                    />
-                    <TouchableOpacity
-                      style={styles.deleteButton}
-                      onPress={() => this.deletePost(post.id)}
-                    >
-                      <Text style={styles.deleteButtonText}>Eliminar</Text>
-                    </TouchableOpacity>
-                  </View>
-                ))
-              ) : (
-                <Text style={styles.noPostsText}>No tienes posts.</Text>
-              )}
-            </ScrollView>
+            {posts.length !== 0 ? (
+              <FlatList
+                data={posts}
+                keyExtractor={(post) => post.id}
+                renderItem={({ item }) => (
+                <Post
+                  content={item.data.msg}
+                  userName={item.data.user}
+                  mail={item.data.email}
+                  likes={item.data.likes}
+                  postId={item.id}
+                />
+            )}
+            />
+            ) : (
+              <Text>No hay posts para mostrar</Text>
+            )}
+      
             <TouchableOpacity style={styles.button} onPress={this.handleLogout}>
               <Text style={styles.buttonText}>Cerrar sesión</Text>
             </TouchableOpacity>
