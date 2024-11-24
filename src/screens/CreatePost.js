@@ -13,16 +13,15 @@ export default class CreatePost extends Component {
   }
 
   handlePost(){
-    console.log(auth.currentUser)
     db.collection("posts").add({
         email: auth.currentUser.email,
         msg: this.state.postText,
         time: Date.now(),
         likes: [], 
     })
-    .then()
+    .then(this.props.navigation.navigate("Home"))
     .catch( e => console.log(e))
-    this.props.navigation.navigate("Home")
+
   }
 
   render() {
