@@ -6,6 +6,7 @@ import firebase from "firebase";
 import { FontAwesome } from "@expo/vector-icons"; //íconos usados para el corazón del like
 
 export default class Post extends Component {
+
   handleLike = () => {  //hago así la funcion, porque sino no me deja usar ".this" por alguna razón
     const { postId } = this.props;
 
@@ -31,7 +32,7 @@ export default class Post extends Component {
   };
 
   render() {
-    const { content, userName, mail, likes, postId } = this.props;
+    const { content, userName, mail, likes } = this.props;
     const currentUser = auth.currentUser;
 
     const isLiked = likes.includes(currentUser.email);
@@ -42,7 +43,7 @@ export default class Post extends Component {
         <Text style={styles.userInfo}>
           {userName} ({mail})
         </Text>
-        <Text style={styles.likesCount}>{likes.length} Likes</Text>
+        <Text style={styles.likesCount}>{likes.length} Like/s</Text>
 
         {isLiked ? (
           <TouchableOpacity onPress={this.handleUnLike} style={styles.button}>

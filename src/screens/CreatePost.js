@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     },
     content:{
       flex: 1,
-      width:"40%", 
+      width:"90%", 
       margin:"2%",
       justifyContent: "center",
       alignItems: "center",
