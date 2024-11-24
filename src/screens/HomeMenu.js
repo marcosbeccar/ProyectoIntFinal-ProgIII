@@ -54,6 +54,7 @@ export default class HomeMenu extends Component {
             >
               {() => (
                 <View style={styles.postContainer}>
+                  <Text style={styles.titulo}>𝕬𝖗𝖊𝖙𝖊</Text>
                   {posts.length !== 0 ? (
                     <FlatList
                       data={posts}
@@ -124,6 +125,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ffffff",
+  },
+  titulo:{
+    fontSize: 60,
+    color: 'blue',
+
   },
   authContainer: {
     flex: 1,

@@ -42,6 +42,7 @@ class Users extends Component {
 
     return (
       <View style={styles.container}>
+        <Text style={styles.titulo}>𝕬𝖗𝖊𝖙𝖊</Text>
         <Text style={styles.message}>Buscador de usuarios</Text>
         <TextInput
           style={styles.input}
@@ -89,6 +90,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
   },
+  titulo:{
+    fontSize: 60,
+    color: 'blue',
+    alignSelf: 'center'
+  },
   message: {
     fontSize: 16,
     color: "#888",
@@ -105,7 +111,7 @@ const styles = StyleSheet.create({
   },
   userText: {
     fontSize: 16,
-    color: "#333",
+    color: "#212121",
   },
 });
 
