@@ -57,16 +57,15 @@ export default class Profile extends Component {
       .doc(postId)
       .delete()
       .then(() => {
-        this.setState((state) => {
-          const updatedPosts = state.posts.filter((post) => post.id !== postId);
-          return {
-            posts: updatedPosts,
-            cantidadPosts: updatedPosts.length,
-          };
+        const currentPosts = this.state.posts;
+        const updatedPosts = currentPosts.filter((post) => post.id !== postId);
+        this.setState({
+          posts: updatedPosts,
+          cantidadPosts: updatedPosts.length,
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error al eliminar el post: ", error);
       });
   };
 
@@ -92,13 +91,13 @@ export default class Profile extends Component {
             />
             <Text style={styles.email}>Email: {email}</Text>
             <Text style={styles.subtitle}>
-              Cantidad de Posts: {cantidadPosts}
+              Cantidad de posts: {cantidadPosts}
             </Text>
             <Text style={styles.subtitle}>Tus Posts:</Text>
             <ScrollView style={styles.postsContainer}>
               {posts.length > 0 ? (
                 posts.map((post, index) => (
-                  <View key={index}>
+                  <View key={index} style={styles.postContainer}>
                     <Post
                       postId={post.id}
                       content={post.data.msg}
@@ -144,14 +143,14 @@ const styles = StyleSheet.create({
   },
   email: {
     fontSize: 16,
-    color: "#636363",
+    color: "#3386F9",
     textAlign: "center",
     marginBottom: 20,
   },
   subtitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: "#343434",
+    color: "#4a90e2",
     marginBottom: 10,
   },
   postsContainer: {
@@ -201,8 +200,19 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: "center",
   },
+  postContainer: {
+    marginBottom: 20, 
+    backgroundColor: "#84C1FA", 
+    padding: 15, 
+    borderRadius: 8, 
+    shadowColor: "#000", 
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    
+    
+  },
   deleteButton: {
-    backgroundColor: "#e74c3c",
+    backgroundColor: "#4a90e2",
     paddingVertical: 8,
     paddingHorizontal: 15,
     borderRadius: 5,

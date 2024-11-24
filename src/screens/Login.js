@@ -41,7 +41,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hola, esto es el login</Text>
+        <Text style={styles.textoInicial}>Inicia sesión desde tu cuenta</Text>
 
         <TextInput
           style={styles.input}
@@ -90,24 +90,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+    backgroundColor: "#E4F1FE",
   },
   input: {
-    height: 40,
-    borderColor: "#ccc",
+    height: 50,
+    borderColor: "#ced4da",
     borderWidth: 1,
-    paddingHorizontal: 10,
-    borderRadius: 5,
+    paddingHorizontal: 15,
+    borderRadius: 8,
     marginVertical: 10,
     width: "100%",
+    backgroundColor: "#F5FBFD",
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  textoInicial:{
+    color: "#4182FA",
+    fontSize: 18,
+    marginBottom: 20,
   },
   button: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#40A6FA",
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
   },
   buttonText: {
-    color: "#fff",
+    color: "#E8F1FA",
     textAlign: "center",
     fontWeight: "bold",
   },

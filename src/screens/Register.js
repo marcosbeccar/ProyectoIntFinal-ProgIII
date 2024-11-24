@@ -52,7 +52,7 @@ export default class Register extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>Hola, esto es el register</Text>
+        <Text  style={styles.textoPrincipal}>Registrate para ingresar</Text>
 
         <TextInput
           style={styles.input}
@@ -106,35 +106,59 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+    backgroundColor: "#4990FA",
   },
   input: {
     height: 40,
-    borderColor: "#ccc",
+    borderColor: "#64748B",
     borderWidth: 1,
-    paddingHorizontal: 10,
-    borderRadius: 5,
+    paddingHorizontal: 15,
+    borderRadius: 8,
     marginVertical: 10,
     width: "100%",
+    backgroundColor: "#F3F3FC",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  textoPrincipal: {
+    fontSize: 17, 
+    color: "#E5F6FA", 
+    marginBottom: 20,
   },
   button: {
-    backgroundColor: "#2196F3",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
+    backgroundColor: "#BA9BFA",
+    paddingVertical: 12,
+    borderRadius: 25,
+    marginTop: 15,
+    width: "100%",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
   buttonText: {
     color: "#fff",
-    textAlign: "center",
+    fontSize: 16,
     fontWeight: "bold",
   },
   texto: {
     marginTop: 20,
-    fontSize: 16,
-    color: "#555",
+    fontSize: 17,
+    color: "#E5F6FA",
+    marginBottom: 20
   },
   loginButtonText: {
-    fontSize: 16,
-    color: "#2196F3",
+    fontSize: 18,
+    color: "#2373FA",
     fontWeight: "bold",
+    backgroundColor: "#9AD2FA",
+    paddingVertical: 10, 
+    paddingHorizontal: 20, 
+    borderRadius: 25, 
+    textAlign: "center", 
+    shadowColor: "#000", 
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
 });
