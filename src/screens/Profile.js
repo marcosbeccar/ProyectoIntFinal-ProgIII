@@ -57,7 +57,6 @@ export default class Profile extends Component {
       .doc(postId)
       .delete()
       .then(() => {
-        console.log("Post eliminado");
         this.setState((state) => {
           const updatedPosts = state.posts.filter((post) => post.id !== postId);
           return {
@@ -67,7 +66,7 @@ export default class Profile extends Component {
         });
       })
       .catch((error) => {
-        console.log("Error al eliminar el post: ", error);
+        console.log(error);
       });
   };
 
@@ -79,10 +78,10 @@ export default class Profile extends Component {
 
   render() {
     const { userName, email, posts, cantidadPosts } = this.state;
-    const currentUser = auth.currentUser;
+    
     return (
       <View style={styles.container}>
-        {currentUser ? (
+      
           <>
             <Text style={styles.title}>Perfil de {userName}</Text>
             <Ionicons
@@ -123,17 +122,8 @@ export default class Profile extends Component {
               <Text style={styles.buttonText}>Cerrar sesión</Text>
             </TouchableOpacity>
           </>
-        ) : (
-          <>
-            <Text style={styles.noLoginText}>No iniciaste sesión</Text>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.props.navigation.navigate("Login")}
-            >
-              <Text style={styles.buttonText}>Ir al Login</Text>
-            </TouchableOpacity>
-          </>
-        )}
+        
+        
       </View>
     );
   }
