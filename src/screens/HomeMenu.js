@@ -26,7 +26,7 @@ export default class HomeMenu extends Component {
       if (user) {
         this.setState({ logueado: true });
 
-        db.collection("posts").onSnapshot((docs) => {
+        db.collection("posts").orderBy("time","desc").onSnapshot((docs) => {
           let posts = [];
           docs.forEach((doc) => {
             posts.push({ id: doc.id, data: doc.data() });
