@@ -65,14 +65,14 @@ export default class Login extends Component {
 
         {this.state.errorMSG && <Text style={styles.errorText}>{this.state.errorMSG}</Text>}
 
-        <Text style={styles.accountText}>Don't have an account?</Text>
+        <Text style={styles.accountText}>Todavía no tenes una cuenta?</Text>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate("Register")}
         >
           <Text style={styles.loginButtonText}>Register</Text>
         </TouchableOpacity>
 
-        <Text style={styles.accountText}>Go back</Text>
+        <Text style={styles.accountText}>Volvé al Home</Text>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate("HomeMenu")}
         >
@@ -107,17 +107,25 @@ const styles = StyleSheet.create({
   },
   textoInicial:{
     color: "#4182FA",
-    fontSize: 18,
-    marginBottom: 20,
+    fontWeight: "bold",
+    fontSize: 19,
+    marginBottom: 24,
+    letterSpacing: 0.5,
   },
   button: {
-    backgroundColor: "#40A6FA",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
+    fontWeight: "bold",
+    backgroundColor: "#2373FA",
+    paddingVertical: 10, 
+    paddingHorizontal: 20, 
+    borderRadius: 25, 
+    textAlign: "center", 
+    shadowColor: "#000", 
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
   buttonText: {
-    color: "#E8F1FA",
+    color: "#E7F5F3",
+    fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
   },
@@ -131,8 +139,16 @@ const styles = StyleSheet.create({
     color: "#555",
   },
   loginButtonText: {
-    fontSize: 16,
-    color: "#2196F3",
+    fontSize: 15,
+    color: "#2373FA",
     fontWeight: "bold",
+    backgroundColor: "#9AD2FA",
+    paddingVertical: 10, 
+    paddingHorizontal: 20, 
+    borderRadius: 25, 
+    textAlign: "center", 
+    shadowColor: "#000", 
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
 });
