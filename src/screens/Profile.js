@@ -99,6 +99,7 @@ export default class Profile extends Component {
                 data={posts}
                 keyExtractor={(post) => post.id}
                 renderItem={({ item }) => (
+                <View style={styles.postContainer}>
                 <Post
                   content={item.data.msg}
                   userName={item.data.user}
@@ -106,6 +107,13 @@ export default class Profile extends Component {
                   likes={item.data.likes}
                   postId={item.id}
                 />
+                <TouchableOpacity
+                  style={styles.deleteButton}
+                  onPress={() => this.deletePost(item.id)}
+                >
+                  <Text style={styles.deleteButtonText}>Eliminar</Text>
+                </TouchableOpacity>
+                </View>
             )}
             />
             ) : (
