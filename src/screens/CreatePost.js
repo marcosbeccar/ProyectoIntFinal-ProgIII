@@ -36,6 +36,8 @@ export default class CreatePost extends Component {
           placeholder="Tu texto"
           onChangeText={ text => this.setState({postText: text})}
           value={this.state.postText}
+          multiline={true}
+          numberOfLines={5}
         />
         <TouchableOpacity onPress={() => this.handlePost()}>
             <Text>Post!</Text>
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
     },
     field: {
         margin: "5%",
+        width: "70%"
     },
     content:{
       flex: 1,
