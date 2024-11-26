@@ -31,7 +31,7 @@ export default class Login extends Component {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ errorMSG: "" });
-        this.props.navigation.navigate("HomeMenu"); // Debería redirigir al Home si funciona
+        this.props.navigation.navigate("HomeMenu"); 
       })
       .catch(() => {
         this.setState({ errorMSG: "Credenciales incorrectas" });
